@@ -1,0 +1,15 @@
+<h2>Charts of <span class="color color-primary">Macro Nutrients</span></h2>
+<hr />
+
+<div *ngIf="macroNutrients; else otroTemplate" class="container">
+  <div class="container" style="max-width: 500px">
+    <p-chart type="pie" [data]="data" [options]="options"></p-chart>
+  </div>
+</div>
+
+<ng-template #otroTemplate>
+  <p>
+    There are no foods added for today yet. Add your meals
+    <a [routerLink]="['/']">here.</a>
+  </p>
+</ng-template>

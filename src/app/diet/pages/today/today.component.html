@@ -1,0 +1,68 @@
+<h2>Food Today</h2>
+<hr />
+
+<div *ngIf="data.length > 0; else otroTemplate" class="row">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="text-center">#</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Fat</th>
+        <th class="text-center">Carbohydrate</th>
+        <th class="text-center">Protein</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let food of data; let i = index">
+        <td class="text-center">{{ i + 1 }}</td>
+        <td class="text-center">{{ food.name }}</td>
+        <td class="text-center">
+          {{ food.macroNutrients.fat | number : "1.2-2" }} g
+        </td>
+        <td class="text-center">
+          {{ food.macroNutrients.carbohydrate | number : "1.2-2" }} g
+        </td>
+        <td class="text-center">
+          {{ food.macroNutrients.protein | number : "1.2-2" }} g
+        </td>
+        <td class="text-center">
+          <button
+            (click)="deleteFood(food.name)"
+            type="button"
+            class="btn btn-outline-warning"
+          >
+            Remove
+          </button>
+        </td>
+      </tr>
+      <tr style="background-color: #f5f5f5">
+        <td class="text-center" colspan="2">Total</td>
+        <td class="text-center">
+          {{ macroNutrients.totalFat | number : "1.2-2" }} g
+        </td>
+        <td class="text-center">
+          {{ macroNutrients.totalCarbohydrate | number : "1.2-2" }} g
+        </td>
+        <td class="text-center">
+          {{ macroNutrients.totalProtein | number : "1.2-2" }} g
+        </td>
+        <td class="text-center">
+          <button
+            (click)="deleteAll()"
+            type="button"
+            class="btn btn-outline-danger"
+          >
+            Remove all
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #otroTemplate>
+  <p>
+    There are no foods added for today yet. Add your meals
+    <a [routerLink]="['/']">here.</a>
+  </p>
+</ng-template>
