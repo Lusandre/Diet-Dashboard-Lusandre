@@ -1,6 +1,7 @@
 # DietDashboard
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+https://diet-dashboard-lusandre.netlify.app/
 
 ## Development server
 
